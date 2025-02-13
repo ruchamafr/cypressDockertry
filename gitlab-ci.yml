@@ -1,0 +1,16 @@
+image: cypress/included:12.17.1  # Use an official Cypress Docker image
+
+stages:
+  - test
+
+cypress_test:
+  stage: test
+  script:
+    - echo "Running Cypress tests..."
+    - npx cypress run
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*  # Save videos of tests
+      - cypress/screenshots/**/*  # Save screenshots if tests fail
+    expire_in: 1 week  # Store artifacts for a week
