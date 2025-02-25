@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "Basic E2E Cypress test example",
   "scripts": {
-    "test": "cypress run"
+    "test": "docker run -it --rm -v %cd%:/e2e -w /e2e cypress/included npx cypress run",
+    "all":"docker run -it --rm -v %cd%:/e2e -w /e2e cypress/included npx cypress run  --reporter junit --reporter-options mochaFile=cypress/results/my-test-output.xml"
+
   },
   "private": true,
   "devDependencies": {
-    "cypress": "^14.0.0"
+    "cypress": "^14.0.0",
+    "cypress-junit-reporter": "^1.3.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^2.0.5",
+    "mocha": "^11.1.0",
+    "mochawesome": "^7.1.3"
   }
 }
